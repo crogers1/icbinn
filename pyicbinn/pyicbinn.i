@@ -37,7 +37,7 @@
         PyErr_SetFromErrno(PyExc_IOError);
         return NULL;
     }
-    $result = PyString_FromStringAndSize($1, result);
+    $result = PyBytes_FromStringAndSize($1, result);
     free($1);
 }
 
