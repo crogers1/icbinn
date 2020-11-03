@@ -26,7 +26,7 @@ def fish(x):
 	return [y[2:] for y in x.split()]
 
 def check_output(a):
-	return subprocess.Popen(a, stdout=subprocess.PIPE).communicate()[0]
+	return subprocess.Popen(a, stdout=subprocess.PIPE, text=True).communicate()[0]
 
 libicbinn_include_dirs = fish(check_output(["pkg-config", "--cflags-only-I", "libicbinn_resolved"]))
 libicbinn_lib_dirs = fish(check_output(["pkg-config", "--libs-only-L", "libicbinn_resolved"]))
