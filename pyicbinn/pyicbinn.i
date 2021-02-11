@@ -45,7 +45,7 @@
 
 %typemap(in) (const void *buf, size_t count) {
     if (!PyString_Check($input)) {
-        PyErr_SetString(PyExc_ValueError, "Expecting a string");
+        PyErr_SetString(PyExc_ValueError, "Expecting a bytes-like object");
         return NULL;
     }
     $1 = (void *)PyString_AsString($input);
