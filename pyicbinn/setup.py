@@ -28,9 +28,9 @@ def fish(x):
 def check_output(a):
 	return subprocess.Popen(a, stdout=subprocess.PIPE, text=True).communicate()[0]
 
-libicbinn_include_dirs = fish(check_output(["pkg-config", "--cflags-only-I", "libicbinn_resolved"]))
-libicbinn_lib_dirs = fish(check_output(["pkg-config", "--libs-only-L", "libicbinn_resolved"]))
-libicbinn_libs = fish(check_output(["pkg-config", "--libs-only-l", "libicbinn_resolved"]))
+libicbinn_include_dirs = fish(check_output(["pkg-config", "--cflags-only-I", "libicbinn"]))
+libicbinn_lib_dirs = fish(check_output(["pkg-config", "--libs-only-L", "libicbinn"]))
+libicbinn_libs = fish(check_output(["pkg-config", "--libs-only-l", "libicbinn"]))
 
 subprocess.call(["swig","-python","pyicbinn.i"])
 
@@ -38,7 +38,6 @@ ext_modules = [Extension("_pyicbinn",
 			sources=['pyicbinn_wrap.c'],
 			library_dirs=libicbinn_lib_dirs,
 			libraries=libicbinn_libs,
-			extra_link_args=["-Wl,-Bsymbolic"],
 			include_dirs=libicbinn_include_dirs + [ '.' ])]
 
 setup(name = 'pyicbinn',   version = '0.1',
