@@ -17,7 +17,7 @@
  */
 
 /* client.c */
-ICBINN *icb;
+extern ICBINN *icb;
 struct cmd *find_command (const char *name);
 void parse_cmd (char *cmd_string);
 int main (int argc, char *argv[]);
